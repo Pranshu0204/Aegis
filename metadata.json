@@ -1,0 +1,8 @@
+{
+  "name": "AEGIS",
+  "description": "An advanced multimodal AI assistant for clinical triage, discharge simplification, and workflow optimization.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

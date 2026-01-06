@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AEGIS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              slate: {
+                850: '#1e293b',
+                900: '#0f172a',
+                950: '#020617',
+              },
+              // Vibrant iOS-style colors for gradients
+              ios: {
+                blue: '#007AFF',
+                teal: '#30B0C7',
+                indigo: '#5856D6',
+                purple: '#AF52DE',
+                pink: '#FF2D55',
+                red: '#FF3B30',
+                orange: '#FF9500',
+              }
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'scale-in': 'scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards', // Spring effect
+              'float': 'float 8s ease-in-out infinite',
+              'float-slow': 'float 12s ease-in-out infinite',
+              'morph': 'morph 8s ease-in-out infinite',
+              'morph-fast': 'morph 4s ease-in-out infinite',
+              'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+              'shimmer': 'shimmer 2.5s linear infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(30px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              scaleIn: {
+                '0%': { transform: 'scale(0.9)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-15px)' },
+              },
+              morph: {
+                '0%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
+                '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' },
+                '100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
+              },
+              pulseGlow: {
+                '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+                '50%': { opacity: '1', transform: 'scale(1.1)' },
+              },
+              shimmer: {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(100%)' },
+              }
+            },
+            backgroundImage: {
+              'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1))',
+              'glass-gradient-dark': 'linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.4))',
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* Liquid Glass Utilities */
+      .liquid-icon {
+        position: relative;
+        overflow: hidden;
+        box-shadow: 
+          inset 0 2px 3px rgba(255, 255, 255, 0.6),
+          inset 0 -2px 3px rgba(0, 0, 0, 0.2),
+          0 8px 16px -4px rgba(0,0,0,0.15);
+      }
+      .liquid-icon::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 50%;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 100%);
+        border-radius: inherit;
+        pointer-events: none;
+      }
+      .liquid-orb {
+        background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0) 20%),
+                    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.4), rgba(255,255,255,0) 20%);
+        box-shadow: inset 0 0 20px rgba(255,255,255,0.5), 0 0 15px rgba(0,165,233,0.3);
+      }
+      
+      .glass-card {
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      .dark .glass-card {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      /* Scrollbars */
+      ::-webkit-scrollbar { width: 6px; height: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+      .dark ::-webkit-scrollbar-thumb { background: #475569; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "marked": "https://esm.sh/marked@12.0.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-[#F2F6FA] dark:bg-[#050912] text-slate-900 dark:text-slate-100 h-screen overflow-hidden transition-colors duration-700">
+    <div id="root" class="h-full"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
